@@ -1,50 +1,818 @@
-<h1>Meu blog tech</h1>
 
-<p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
+
+```html
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dragon Ball | Universo Saiyajin</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --laranja: #ff6b00;
+      --amarelo: #ffd21f;
+      --vermelho: #e52b18;
+      --azul: #0878d1;
+      --escuro: #070b14;
+      --card: #111827;
+      --texto: #fff;
+      --cinza: #aab3c2;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--escuro);
+      color: var(--texto);
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 7%;
+      background: rgba(5, 8, 15, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #ffffff18;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      color: var(--amarelo);
+      text-shadow: 0 0 12px #ff9d00;
+    }
+
+    .logo span {
+      color: var(--laranja);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: var(--amarelo);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 7% 80px;
+
+      background:
+        radial-gradient(circle at 50% 40%, #ff7b002b, transparent 35%),
+        linear-gradient(135deg, #071a3a, #080b12 55%, #260b02);
+    }
+
+    .hero-content {
+      max-width: 950px;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 12vw, 150px);
+      line-height: .85;
+      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: -7px;
+      color: #fff;
+      text-shadow:
+        5px 5px 0 var(--laranja),
+        0 0 40px #ff8a0033;
+    }
+
+    .hero h1 span {
+      color: var(--amarelo);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 35px auto;
+      color: #dce1ea;
+      font-size: 19px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, var(--laranja), var(--amarelo));
+      color: #111;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 0 30px #ff6b0055;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    /* SEÇÕES */
+
+    section {
+      padding: 100px 7%;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .titulo h2 {
+      font-size: clamp(35px, 5vw, 55px);
+      margin-bottom: 12px;
+    }
+
+    .titulo h2 span {
+      color: var(--laranja);
+    }
+
+    .titulo p {
+      color: var(--cinza);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* PERSONAGENS */
+
+    .personagens {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .personagem {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border-radius: 22px;
+      background: linear-gradient(160deg, #172033, #0d111a);
+      border: 1px solid #ffffff15;
+      padding: 25px;
+      transition: .35s;
+    }
+
+    .personagem:hover {
+      transform: translateY(-10px);
+      border-color: var(--laranja);
+      box-shadow: 0 20px 50px #000;
+    }
+
+    .personagem .icone {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 55px;
+      background: radial-gradient(circle, #ffe873, #ff6b00 55%, #9b1700);
+      box-shadow: 0 0 30px #ff6b0055;
+    }
+
+    .personagem h3 {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    .personagem p {
+      color: var(--cinza);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: #ff6b001c;
+      color: var(--amarelo);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* TRANSFORMAÇÕES */
+
+    #transformacoes {
+      background: linear-gradient(180deg, #090d16, #120b05);
+      max-width: none;
+    }
+
+    .transformacoes-inner {
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .formas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .forma {
+      padding: 35px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #161d2c, #0d1018);
+      border: 1px solid #ffffff15;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .forma:hover {
+      transform: scale(1.03);
+    }
+
+    .forma .energia {
+      height: 130px;
+      width: 130px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      background: radial-gradient(circle, white 0%, #80cfff 20%, #0878d1 50%, transparent 70%);
+      box-shadow: 0 0 60px #0878d1;
+      animation: energia 2s infinite alternate;
+    }
+
+    .forma:nth-child(2) .energia {
+      background: radial-gradient(circle, white, #ffe66b 20%, #ff6b00 50%, transparent 70%);
+      box-shadow: 0 0 60px #ff6b00;
+    }
+
+    .forma:nth-child(3) .energia {
+      background: radial-gradient(circle, white, #ff7aa7 20%, #8b25ff 50%, transparent 70%);
+      box-shadow: 0 0 60px #8b25ff;
+    }
+
+    @keyframes energia {
+      from {
+        transform: scale(.9);
+        opacity: .7;
+      }
+      to {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+    }
+
+    .forma h3 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .forma p {
+      color: var(--cinza);
+    }
+
+    /* SAGAS */
+
+    .sagas {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .saga {
+      padding: 30px;
+      border-radius: 20px;
+      background: var(--card);
+      border-left: 5px solid var(--laranja);
+      transition: .3s;
+    }
+
+    .saga:hover {
+      transform: translateX(8px);
+      background: #172033;
+    }
+
+    .saga h3 {
+      color: var(--amarelo);
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .saga p {
+      color: var(--cinza);
+    }
+
+    /* ESFERAS */
+
+    .esferas {
+      text-align: center;
+    }
+
+    .bolas {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+
+    .bola {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      font-weight: bold;
+      color: #fff;
+      background:
+        radial-gradient(circle at 30% 25%, #fff8, transparent 18%),
+        radial-gradient(circle, #ff7b00, #d92800 70%);
+      box-shadow:
+        inset -8px -10px 15px #780f00,
+        0 0 25px #ff5a0055;
+    }
+
+    .esferas p {
+      max-width: 700px;
+      margin: auto;
+      color: var(--cinza);
+    }
+
+    /* CURIOSIDADES */
+
+    .curiosidades {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .curiosidade {
+      padding: 30px;
+      text-align: center;
+      border-radius: 20px;
+      background: #101722;
+      border: 1px solid #ffffff12;
+    }
+
+    .curiosidade strong {
+      display: block;
+      font-size: 45px;
+      color: var(--amarelo);
+      margin-bottom: 10px;
+    }
+
+    .curiosidade p {
+      color: var(--cinza);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 60px 7%;
+      text-align: center;
+      background: #05070c;
+      border-top: 1px solid #ffffff12;
+    }
+
+    footer .logo {
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: var(--cinza);
+      font-size: 14px;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 15px 4%;
+      }
+
+      nav ul {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .personagens {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .formas,
+      .curiosidades {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        position: relative;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: 80vh;
+        padding-top: 70px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .personagens,
+      .sagas {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 5%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<h1>Meu blog tech</h1>
-<p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
+
+  <!-- MENU -->
+
+  <nav>
+    <div class="logo">DRAGON<span>BALL</span> ⚡</div>
+
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#personagens">Personagens</a></li>
+      <li><a href="#transformacoes">Transformações</a></li>
+      <li><a href="#sagas">Sagas</a></li>
+      <li><a href="#esferas">Esferas</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <header class="hero" id="inicio">
+    <div class="hero-content">
+
+      <h1>
+        DRAGON<br>
+        <span>BALL</span>
+      </h1>
+
+      <p>
+        Entre em um universo de guerreiros, Saiyajins,
+        transformações lendárias e batalhas que ultrapassam
+        os limites do poder.
+      </p>
+
+      <a href="#personagens" class="btn">
+        CONHECER O UNIVERSO ⚡
+      </a>
+
+    </div>
+  </header>
+
+  <!-- PERSONAGENS -->
+
+  <section id="personagens">
+
+    <div class="titulo">
+      <h2>Guerreiros <span>Lendários</span></h2>
+
+      <p>
+        Conheça alguns dos personagens que marcaram
+        a história de Dragon Ball.
+      </p>
+    </div>
+
+    <div class="personagens">
+
+      <article class="personagem">
+        <div class="icone">🥋</div>
+        <h3>Goku</h3>
+
+        <p>
+          O protagonista da série. Um Saiyajin criado na
+          Terra que está sempre procurando adversários
+          mais fortes para superar seus próprios limites.
+        </p>
+
+        <span class="tag">SAIYAJIN</span>
+      </article>
+
+      <article class="personagem">
+        <div class="icone">👑</div>
+        <h3>Vegeta</h3>
+
+        <p>
+          Príncipe dos Saiyajins e rival de Goku.
+          Seu orgulho e determinação fazem dele um dos
+          guerreiros mais poderosos do universo.
+        </p>
+
+        <span class="tag">PRÍNCIPE SAIYAJIN</span>
+      </article>
+
+      <article class="personagem">
+        <div class="icone">⚡</div>
+        <h3>Gohan</h3>
+
+        <p>
+          Filho de Goku e possuidor de um enorme potencial.
+          Sua força cresce especialmente quando precisa
+          proteger aqueles que ama.
+        </p>
+
+        <span class="tag">GUERREIRO Z</span>
+      </article>
+
+      <article class="personagem">
+        <div class="icone">🟢</div>
+        <h3>Piccolo</h3>
+
+        <p>
+          Um poderoso Namekuseijin e estrategista.
+          Foi mestre de Gohan e se tornou um dos grandes
+          aliados dos Guerreiros Z.
+        </p>
+
+        <span class="tag">NAMEKUSEIJIN</span>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- TRANSFORMAÇÕES -->
+
+  <section id="transformacoes">
+
+    <div class="transformacoes-inner">
+
+      <div class="titulo">
+        <h2>Transformações <span>Supremas</span></h2>
+
+        <p>
+          Quando o poder normal não é suficiente,
+          os guerreiros ultrapassam seus próprios limites.
+        </p>
+      </div>
+
+      <div class="formas">
+
+        <article class="forma">
+
+          <div class="energia"></div>
+
+          <h3>Super Saiyajin</h3>
+
+          <p>
+            Uma transformação clássica que aumenta
+            drasticamente o poder do guerreiro Saiyajin.
+          </p>
+
+        </article>
+
+        <article class="forma">
+
+          <div class="energia"></div>
+
+          <h3>Super Saiyajin Blue</h3>
+
+          <p>
+            Uma forma divina que combina o poder
+            do Super Saiyajin com o Ki Divino.
+          </p>
+
+        </article>
+
+        <article class="forma">
+
+          <div class="energia"></div>
+
+          <h3>Ultra Instinto</h3>
+
+          <p>
+            Uma técnica extraordinária que permite ao
+            corpo reagir aos ataques quase automaticamente.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SAGAS -->
+
+  <section id="sagas">
+
+    <div class="titulo">
+
+      <h2>Sagas <span>Inesquecíveis</span></h2>
+
+      <p>
+        Grandes momentos que ajudaram a construir
+        o universo de Dragon Ball.
+      </p>
+
+    </div>
+
+    <div class="sagas">
+
+      <article class="saga">
+        <h3>👽 Saga dos Saiyajins</h3>
+
+        <p>
+          A chegada de Raditz revela a verdadeira origem
+          de Goku e apresenta a ameaça dos Saiyajins.
+        </p>
+      </article>
+
+      <article class="saga">
+        <h3>❄️ Saga de Freeza</h3>
+
+        <p>
+          Os Guerreiros Z viajam até Namekusei em busca
+          das Esferas do Dragão e enfrentam Freeza.
+        </p>
+      </article>
+
+      <article class="saga">
+        <h3>🤖 Saga dos Androides</h3>
+
+        <p>
+          Uma ameaça vinda do futuro muda completamente
+          o destino dos Guerreiros Z.
+        </p>
+      </article>
+
+      <article class="saga">
+        <h3>🧬 Saga de Cell</h3>
+
+        <p>
+          Cell surge como uma ameaça extremamente poderosa
+          e coloca os guerreiros diante de um novo desafio.
+        </p>
+      </article>
+
+      <article class="saga">
+        <h3>👹 Saga Majin Boo</h3>
+
+        <p>
+          Uma antiga ameaça desperta e obriga os guerreiros
+          a utilizarem novas técnicas e fusões.
+        </p>
+      </article>
+
+      <article class="saga">
+        <h3>🌌 Torneio do Poder</h3>
+
+        <p>
+          Guerreiros de diferentes universos participam
+          de uma batalha onde o destino de seus universos está em jogo.
+        </p>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- ESFERAS -->
+
+  <section id="esferas" class="esferas">
+
+    <div class="titulo">
+
+      <h2>As 7 Esferas do <span>Dragão</span></h2>
+
+      <p>
+        Reúna as sete esferas e invoque Shenlong
+        para realizar um desejo.
+      </p>
+
+    </div>
+
+    <div class="bolas">
+
+      <div class="bola">★</div>
+      <div class="bola">★★</div>
+      <div class="bola">★★★</div>
+      <div class="bola">★★★★</div>
+      <div class="bola">★★★★★</div>
+      <div class="bola">★★★★★★</div>
+      <div class="bola">★★★★★★★</div>
+
+    </div>
+
+    <p>
+      As Esferas do Dragão são um dos elementos mais
+      conhecidos da franquia e estão presentes em
+      diversas aventuras dos personagens.
+    </p>
+
+  </section>
+
+  <!-- CURIOSIDADES -->
+
+  <section>
+
+    <div class="titulo">
+
+      <h2>Universo <span>Dragon Ball</span></h2>
+
+      <p>
+        Alguns elementos que fazem parte desse universo.
+      </p>
+
+    </div>
+
+    <div class="curiosidades">
+
+      <article class="curiosidade">
+        <strong>7</strong>
+        <p>Esferas do Dragão necessárias para invocar o dragão.</p>
+      </article>
+
+      <article class="curiosidade">
+        <strong>∞</strong>
+        <p>Limites que os guerreiros tentam superar constantemente.</p>
+      </article>
+
+      <article class="curiosidade">
+        <strong>12</strong>
+        <p>Universos apresentados no contexto do Torneio do Poder.</p>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="logo">
+      DRAGON<span>BALL</span> ⚡
+    </div>
+
+    <p>
+      Página de fã criada para fins educacionais.
+    </p>
+
+    <p>
+      Dragon Ball é uma obra de Akira Toriyama e
+      seus respectivos detentores de direitos.
+    </p>
+
+  </footer>
+
 </body>
 </html>
-<main>
-<h2>Meu primeiro post</h2>
-<p>Por: Marcelo Paludetto</p>
-<p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de tecnologia.</p>
-</main>
-<main>
-<article>
-<img src="imagem-blog.png"
-alt="Logotipo conceitual de tecnologia e educacao: um livro aberto de onde emerge um cérebro digital brilhante, cercado por ícones de Wi‑Fi, circuitos e lâmpada de ideia. Cores em tons de azul e branco.">
+```
 
-<div>
-<h2>Meu primeiro post</h2>
-<p class="artigo-autor">Por: Miguel bezerra</p>
-<p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação
-e curiosidades da área de tecnologia.</p>
-<button>❤️<span>0</span></button>
-<button>👍<span>0</span></button>
-</div>
-</article>
+### Como colocar no GitHub Pages
 
-<article>
-<img src="imagem-blog.png"
-alt="Logotipo conceitual de tecnologia e educacao: um livro aberto de onde emerge um cérebro digital brilhante, cercado por ícones de Wi‑Fi, circuitos e lâmpada de ideia. Cores em tons de azul e branco.">
+1. Crie um repositório no GitHub.
+2. Crie o arquivo **`index.html`**.
+3. Cole o código acima.
+4. Faça o **Commit**.
+5. Vá em **Settings → Pages**.
+6. Em **Build and deployment**, escolha **Deploy from a branch**.
+7. Selecione `main` e a pasta `/root`.
+8. Salve.
 
-<div>
-<h2>Meu primeiro post</h2>
-<p class="artigo-autor">Por: Marcelo Paludetto</p>
-<p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação
-e curiosidades da área de tecnologia.</p>
-<button>❤️<span>0</span></button>
-<button>👍<span>0</span></button>
-</div>
-</article>
-</main>
+Depois de alguns instantes, o GitHub Pages vai gerar o endereço da sua página.
